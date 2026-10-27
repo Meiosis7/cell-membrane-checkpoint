@@ -33,7 +33,7 @@
  <div class="gradient-monitor"><div class="monitor-top"><span>双侧采样仪</span><span id="gradientTag">AWAITING SAMPLE</span></div><div class="samples"><div><span>胞外</span><strong id="outsideValue">— —</strong></div><span class="sample-divider">│</span><div><span>胞内</span><strong id="insideValue">— —</strong></div></div><p id="gradientResult">取得读数后，判断申请是否顺着驱动力。</p></div>
  </section>
  <section class="control-wrap"><div class="section-head"><span>03 / 运输调度</span><span class="online-dot">● 在线</span></div>
- <div class="routing-panel"><div class="tiny-label">接通通行路线 / ROUTING</div><div id="routeButtons" class="route-buttons"></div><div class="port-panel"><label for="portSelect">蛋白端口</label><select id="portSelect"><option value="none">无需蛋白 · 脂质层</option></select><p id="routeDescription">选择运输路线后，接入对应设施。</p></div><div class="energy-panel"><div><span class="tiny-label">ATP 库存</span><strong id="energyStock">—</strong></div><button id="energyBtn" class="energy-token" aria-pressed="false">＋ 插入 1 ATP</button></div><div id="energyHint" class="energy-hint">本班不需直接消耗 ATP</div></div>
+ <div class="routing-panel"><div class="tiny-label">接通通行路线 / ROUTING</div><div id="routeButtons" class="route-buttons"></div><div class="port-panel"><label for="portSelect" id="portLabel">具体蛋白</label><select id="portSelect"><option value="none">无需蛋白 · 脂质层</option></select><p id="routeDescription">选择运输路线后，接入对应设施。</p></div><div class="energy-panel"><div><span class="tiny-label">ATP 库存</span><strong id="energyStock">—</strong></div><button id="energyBtn" class="energy-token" aria-pressed="false">＋ 插入 1 ATP</button></div><div id="energyHint" class="energy-hint">本班不需直接消耗 ATP</div></div>
  <div class="decision-area"><div class="tiny-label">最终裁决 / STAMP & RELEASE</div><div class="stamps"><button id="denyBtn" class="stamp deny"><span>拒绝</span><small>DENIED</small></button><button id="approveBtn" class="stamp approve"><span>放行</span><small>APPROVED</small></button></div><p id="decisionHint">先完成两项查验，再盖章裁决。</p></div>
  <div class="operator-note"><span>✦ 检查员提示</span><p id="operatorHint">第一位来访者已在窗口等候。扫描和采样不会扣除 ATP。</p></div>
  </section>
@@ -44,5 +44,5 @@
 <div id="toast" class="toast" role="status"></div>
 <div id="feedback" class="feedback" hidden aria-live="polite"><div class="feedback-symbol" id="feedbackSymbol">✓</div><div class="feedback-body"><div class="feedback-kicker" id="feedbackKicker">裁决正确</div><h2 id="feedbackTitle">运输许可已核准</h2><p id="feedbackReason"></p><div class="feedback-metrics" id="feedbackMetrics"></div></div><button id="nextBtn" class="primary-button">下一位 →</button></div>
 <div id="overlay" class="overlay"><section id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"></section></div>
-<script src="core.js"></script><script src="stage.js"></script><script src="career.js"></script><script src="office.js"></script><script src="app.js"></script>
+<script src="core.js?v=1.2.1"></script><script src="stage.js"></script><script src="career.js"></script><script src="office.js"></script><script src="app.js?v=1.2.1"></script>
 </body></html>

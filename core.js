@@ -59,7 +59,8 @@ let good=true,why=c.reason;
 if(d.approve!==c.allowed){good=false;why=c.allowed?'这份申请应放行。'+c.reason:'这份申请应拒绝。'+c.reason;}
 else if(d.approve){
 const accepted=c.accepted||[{route:c.route,port:c.port}];
-if(!dayInfo(s).unlocks.includes(d.route)||!accepted.some(a=>a.route===d.route&&a.port===d.port)){good=false;why='运输设施配置不匹配。'+c.reason;}
+if(!dayInfo(s).unlocks.includes(d.route)){good=false;why='所选运输路线本班尚未开放。'+c.reason;}
+else if(!accepted.some(a=>a.route===d.route&&a.port===d.port)){good=false;const sameRoute=accepted.filter(a=>a.route===d.route),chosen=ROUTES.find(r=>r.id===d.route);if(sameRoute.length&&chosen){const selected=chosen.portOptions.find(p=>p.id===d.port),required=sameRoute.map(a=>chosen.portOptions.find(p=>p.id===a.port)).filter(Boolean).map(p=>'“'+p.name+'”').join('或');why=chosen.name+'路线选对了，但具体蛋白不匹配：当前选的是“'+(selected?selected.name:'未指定蛋白')+'”，本申请需要'+required+'。'+c.reason;}else{why='运输路线不匹配。'+c.reason;}}
 else if(Number(d.energy||0)!==c.energy){good=false;why=c.energy?'钠钾泵完整循环必须拨付 1 ATP。'+c.reason:'这项被动运输不需要拨付 ATP；多拨能量不会改变运输机制。'+c.reason;}
 else if(c.energy>s.energy){good=false;why='ATP 仓库不足，无法执行本次泵循环。'}
 }
