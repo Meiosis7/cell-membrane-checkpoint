@@ -4,11 +4,12 @@
 
 **[立即试玩](https://meiosis7.github.io/cell-membrane-checkpoint/)** · **[分子演出图鉴](https://meiosis7.github.io/cell-membrane-checkpoint/theatre.html)** · **[离线版与版本存档](https://github.com/Meiosis7/cell-membrane-checkpoint/releases/latest)**
 
-## v1.2 经营版
+## v1.2.2 一屏检查台
 
 - 三班教学、18件申请；教学后解锁持续生成的随机执勤。
 - 8类专属运输演出，含水通道、GLUT载体和3Na⁺/2K⁺泵循环。
 - 5种随机事件、经费与经验、永久设施、应急修复、12项成就。
+- 桌面检查台按窗口高度排布，规定、证件、查验、运输配置和盖章同时可见；裁决反馈独立占位。
 - 自动保存、继续执勤、暂停、声音开关及窄屏布局。
 - 全部为游戏币；存档保存在当前浏览器与当前网址，无账号或云同步。
 
