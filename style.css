@@ -67,3 +67,20 @@
 }
 @media(min-width:1000px) and (min-height:681px){.queue-panel{padding-top:5px;margin-top:7px}.manual-wrap .operator-note{padding-top:5px;margin-top:7px}}
 @media(min-width:1000px) and (min-height:600px) and (max-height:680px){.manual-paper{padding-block:7px}.manual-line{display:none}.manual-paper h2{margin-bottom:4px}.manual-wrap .operator-note{margin-top:2px}}
+/* v1.2.3 — keep the full desk, let the theatre take the unused height. */
+@media(min-width:1000px) and (min-height:600px){
+ #game{grid-template-rows:60px 34px minmax(112px,1fr) max-content auto 24px}
+ #game:has(#feedback:not([hidden])){grid-template-rows:60px 34px minmax(78px,1fr) max-content auto 24px}
+}
+@media(min-width:1000px) and (min-height:600px) and (max-height:760px){
+ #game{grid-template-rows:52px 30px minmax(100px,1fr) max-content auto 21px}
+ #game:has(#feedback:not([hidden])){grid-template-rows:52px 30px minmax(64px,1fr) max-content auto 21px}
+}
+@media(min-width:1000px) and (min-height:820px){
+ #game .passport .paper-kicker,#game .passport-footer{display:flex}
+ #game .passport-footer{margin-top:7px;font-size:8px}
+ #game .molecule-photo{width:88px;height:96px}#game .molecule-photo svg{width:84px;height:76px}
+ #game .manual-paper .paper-kicker{display:block;margin-bottom:6px}
+ #game .manual-paper ol{font-size:12px;line-height:1.65}
+ #game .passport-fields h3{font-size:23px}
+}
