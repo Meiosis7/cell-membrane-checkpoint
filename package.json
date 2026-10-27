@@ -1,0 +1,12 @@
+{
+  "name": "cell-membrane-checkpoint",
+  "version": "1.2.0",
+  "private": true,
+  "description": "原创中文细胞膜运输边检学习游戏",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node tests/core.test.cjs && node tests/stage.test.cjs && node tests/career.test.cjs && node tests/dynamic-core.test.cjs && node tests/presentation-regression.test.cjs"
+  }
+}
