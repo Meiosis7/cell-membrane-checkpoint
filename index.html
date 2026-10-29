@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#202e2a"><meta name="description" content="一款原创的生物学证件检查游戏。扫描分子、核对梯度、接通运输设施，为细胞稳态盖下你的印章。"><title>细胞膜边检站 · MEMBRANE CONTROL</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%232a3c33' width='64' height='64' rx='12'/%3E%3Cpath d='M14 18h36v28H14z' fill='none' stroke='%23d7bb78' stroke-width='4'/%3E%3Cpath d='M32 12v40' stroke='%23d7bb78' stroke-width='4'/%3E%3C/svg%3E"><link rel="stylesheet" href="style.css?v=1.2.3"></head>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#202e2a"><meta name="description" content="一款原创的生物学证件检查游戏。扫描分子、核对梯度、接通运输设施，为细胞稳态盖下你的印章。"><title>细胞膜边检站 · MEMBRANE CONTROL</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%232a3c33' width='64' height='64' rx='12'/%3E%3Cpath d='M14 18h36v28H14z' fill='none' stroke='%23d7bb78' stroke-width='4'/%3E%3Cpath d='M32 12v40' stroke='%23d7bb78' stroke-width='4'/%3E%3C/svg%3E"><link rel="stylesheet" href="style.css?v=1.3.0"></head>
 <body>
 <main id="game">
 <header class="topbar">
@@ -18,13 +18,14 @@
  <div class="performance-caption"><span id="scenePhase">待检</span><div><b id="sceneTitle">下一位，请出示分子通行证。</b><p id="sceneNarration">扫描后可见分子形态；盖章后播放专属运输演出。</p></div></div>
  <div class="window-sill"><span><i id="signal" class="signal"></i> <span id="windowStatus">检查站待命</span></span><span class="sill-right">选择透过 · 维持稳态</span></div>
 </section>
+<nav class="mobile-tabs" aria-label="手机检查台切换"><button data-mobile-view="inspect" aria-pressed="true" aria-controls="inspectionPanel">① 查验证件</button><button data-mobile-view="routing" aria-pressed="false" aria-controls="routingPanel">② 配置运输</button><button data-mobile-view="rules" aria-pressed="false" aria-controls="rulesPanel">当班规定</button></nav>
 <section class="workbench">
- <aside class="manual-wrap"><div class="section-head"><span>01 / 值班规定</span><button class="link-button" id="manualBtn">完整手册 ↗</button></div>
+ <aside class="manual-wrap" id="rulesPanel"><div class="section-head"><span>01 / 值班规定</span><button class="link-button" id="manualBtn">完整手册 ↗</button></div>
  <div class="manual-paper"><span class="clip" aria-hidden="true"></span><div class="paper-kicker">细胞稳态管理局 · 内部通告</div><h2 id="ruleTitle">本班通行条例</h2><div class="manual-line"></div><ol id="rules"></ol><div class="manual-seal">核准<br>07</div><p class="manual-foot">物理上能通过 ≠ 本站批准通行。<br>按本班开放设施与申请目标裁决。</p></div>
  <div class="queue-panel"><span class="tiny-label">待检队列 / QUEUE</span><div id="queueDots" class="queue-dots"></div><div class="queue-bottom"><span id="queueLeft">6 件待检</span><span id="combo">连续正确 0</span></div></div>
  <div class="operator-note"><span>✦ 检查员提示</span><p id="operatorHint">第一位来访者已在窗口等候。扫描和采样不会扣除 ATP。</p></div>
  </aside>
- <section class="docket-wrap"><div class="section-head"><span>02 / 运输申请</span><span id="docketId">档案 MC–0101</span></div>
+ <section class="docket-wrap" id="inspectionPanel"><div class="section-head"><span>02 / 运输申请</span><span id="docketId">档案 MC–0101</span></div>
  <article class="passport" id="passport"><div class="passport-top"><div><span class="paper-kicker">细胞膜出入境管理处</span><h2>分子通行证</h2></div><span class="passport-logo">✣</span></div>
  <div class="passport-main"><div class="molecule-photo"><svg id="moleculeArt" viewBox="0 0 120 112" aria-label="分子图形"></svg><span id="photoLabel">待扫描</span></div><div class="passport-fields"><span class="tiny-label">申报名称 / DECLARED</span><h3 id="declared">氧气</h3><div class="id-line"><span>申请方向</span><b id="direction">胞外 → 胞内</b></div><div class="id-line"><span>证件状态</span><b id="idState" class="pending">尚未核验</b></div></div></div>
  <div class="spec-row"><div><span>分子尺度</span><b id="specSize">···</b></div><div><span>净电荷</span><b id="specCharge">···</b></div><div><span>脂溶性 / 极性</span><b id="specAffinity">···</b></div></div>
@@ -33,8 +34,9 @@
  <div class="inspection-tools"><button id="scanBtn" class="instrument"><span class="instrument-icon">⌕</span><span><b>扫描货物</b><small id="scanSmall">核验身份与性质</small></span><span class="keycap">1</span></button><button id="measureBtn" class="instrument"><span class="instrument-icon">⇄</span><span><b>测量梯度</b><small id="measureSmall">取样胞内与胞外</small></span><span class="keycap">2</span></button></div>
  <div class="gradient-monitor"><div class="monitor-top"><span>双侧采样仪</span><span id="gradientTag">AWAITING SAMPLE</span></div><div class="samples"><div><span>胞外</span><strong id="outsideValue">— —</strong></div><span class="sample-divider">│</span><div><span>胞内</span><strong id="insideValue">— —</strong></div></div><p id="gradientResult">取得读数后，判断申请是否顺着驱动力。</p></div>
  </section>
+ <button class="mobile-next-step" data-mobile-view="routing">继续：配置运输 →</button>
  <section class="control-wrap"><div class="section-head"><span>03 / 运输调度</span><span class="online-dot">● 在线</span></div>
- <div class="routing-panel"><div class="tiny-label">接通通行路线 / ROUTING</div><div id="routeButtons" class="route-buttons"></div><div class="port-panel"><label for="portSelect" id="portLabel">具体蛋白</label><select id="portSelect"><option value="none">无需蛋白 · 脂质层</option></select><p id="routeDescription">选择运输路线后，接入对应设施。</p></div><div class="energy-panel"><div><span class="tiny-label">ATP 库存</span><strong id="energyStock">—</strong></div><button id="energyBtn" class="energy-token" aria-pressed="false">＋ 插入 1 ATP</button></div><div id="energyHint" class="energy-hint">本班不需直接消耗 ATP</div></div>
+ <div class="routing-panel" id="routingPanel"><div class="tiny-label">接通通行路线 / ROUTING</div><div id="routeButtons" class="route-buttons"></div><div class="port-panel"><label for="portSelect" id="portLabel">具体蛋白</label><select id="portSelect"><option value="none">无需蛋白 · 脂质层</option></select><p id="routeDescription">选择运输路线后，接入对应设施。</p></div><div class="energy-panel"><div><span class="tiny-label">ATP 库存</span><strong id="energyStock">—</strong></div><button id="energyBtn" class="energy-token" aria-pressed="false">＋ 插入 1 ATP</button></div><div id="energyHint" class="energy-hint">本班不需直接消耗 ATP</div></div>
  <div class="decision-area"><div class="tiny-label">最终裁决 / STAMP & RELEASE</div><div class="stamps"><button id="denyBtn" class="stamp deny"><span>拒绝</span><small>DENIED</small></button><button id="approveBtn" class="stamp approve"><span>放行</span><small>APPROVED</small></button></div><p id="decisionHint">先完成两项查验，再盖章裁决。</p></div>
 
  </section>
@@ -46,5 +48,5 @@
 <div id="toast" class="toast" role="status"></div>
 
 <div id="overlay" class="overlay"><section id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"></section></div>
-<script src="core.js?v=1.2.1"></script><script src="stage.js"></script><script src="career.js"></script><script src="office.js"></script><script src="app.js?v=1.2.1"></script>
+<script src="core.js?v=1.2.1"></script><script src="stage.js"></script><script src="career.js"></script><script src="office.js"></script><script src="app.js?v=1.3.0"></script>
 </body></html>
